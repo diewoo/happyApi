@@ -83,7 +83,7 @@ router.delete(
 		  .then(child => {
 			// Delete
 			child.remove().then(() => res.json({ success: true,
-			message: "Borrado con exito"}));
+			message: "Borrado con éxito"}));
 		  })
 		  .catch(err => res.status(404).json({ childNotFound: 'No child found' }));
 	}
