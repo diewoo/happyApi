@@ -47,8 +47,8 @@ router.post('/register', (req, res) => {
   
 	Child.findOne({ identityDocumentNumber: req.body.identityDocumentNumber }).then(child => {
 	  if (child) {
-		errors.identityDocumentNumber = 'Ya existe el registro';
-		return res.status(400).json(errors);
+		errors.message = 'Ya existe el registro';
+		return res.status(422).json(errors);
 	  } else {
 		const avatar = gravatar.url(req.body.identityDocumentNumber, {
 		  s: '200',
