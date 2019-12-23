@@ -37,6 +37,19 @@ router.get('/:id', (req, res) => {
 		);
 });
 
+// @route   GET api/fathers/email
+// @desc    Get fathers by id
+// @access  Public
+router.get('/email/findByEmail', (req, res) => {
+	Father.findOne({ email: req.body.email }).then(father => {
+	if (father) {
+			return res.status(200).json(father);
+	} else {
+		res.status(404).json({ fatherNotFound: 'No father found' })
+	}
+	})		
+});
+
 // @route   POST api/posts
 // @desc    Create post
 // @access  public
@@ -117,8 +130,8 @@ router.post(
 		Father.findById(req.params.id)
 			.then(father => {
 				const newChild = {
-					child: req.body.id,
-					names: req.body.names
+					names: req.body.names,
+					identityDocumentNumber: req.body.identityDocumentNumber,
 				};
 				console.log(newChild)
 

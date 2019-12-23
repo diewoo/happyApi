@@ -43,20 +43,23 @@ const FatherSchema = new Schema({
   line: {
     type: String
   },
-  district :{
+  district: {
     type: String
   },
   childs: [
     {
-        child: {
-          type: Schema.Types.ObjectId,
-          ref: 'child'
-        },
-        date: {
-          type: Date,
-          default: Date.now
-        }
+      child: {
+        type: Schema.Types.ObjectId,
+        ref: 'child'
+      },
+      names: {
+        type: String
+      },
+      date: {
+        type: Date,
+        default: Date.now
       }
+    }
   ]
-  });
-  module.exports = Father = mongoose.model('father', FatherSchema);
+});
+module.exports = Father = mongoose.model('father', FatherSchema);
