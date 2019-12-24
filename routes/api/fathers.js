@@ -3,6 +3,7 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const keys = require('../../config/keys');
 const randomstring = require("randomstring");
+const sendMail = require('../../helpers/sendEmail');
 
 // Load Input Validation
 const validateRegisterInput = require('../../validation/register');
@@ -187,4 +188,22 @@ router.put(
 
 	}
 );
+// @route   POST api/sendEmail
+// @desc    send Email register
+// @access  Public
+router.post('/sendEmail', (req, res) => {
+    const email = req.body.email;
+    const message = req.body.message;
+    const user = {
+        email: email,
+        message: message
+    }
+
+    // user.name="Sr(a)"
+    sendMail.confirm(user, (err, data) => {
+        console.log(data);
+        console.log(user);
+        res.status(200).jsonp(data);
+    })
+})
 module.exports = router;
