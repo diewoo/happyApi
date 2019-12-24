@@ -177,9 +177,6 @@ router.put(
 			profileFields.specialOffer = req.body.specialOffer;
 		if (req.body.line) profileFields.line = req.body.line;
 		if (req.body.district) profileFields.district = req.body.district;
-
-
-
 		Father.findByIdAndUpdate(req.params.id, { $set: profileFields }, function (err, product) {
 			if (err) return next(err);
 			res.send('Father udpated');
