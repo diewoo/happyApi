@@ -63,8 +63,8 @@ router.post('/register', (req, res) => {
 
 	Father.findOne({ email: req.body.email }).then(father => {
 		if (father) {
-			errors.email = 'Ya existe el correo';
-			return res.status(400).json(errors);
+			errors.message = 'Ya existe el correo';
+			return res.status(422).send(errors)
 		} else {
 			const avatar = gravatar.url(req.body.email, {
 				s: '200',
@@ -130,8 +130,8 @@ router.post(
 		Father.findById(req.params.id)
 			.then(father => {
 				const newChild = {
-					names: req.body.names,
-					identityDocumentNumber: req.body.identityDocumentNumber,
+					child: req.body.child,
+					names: req.body.names
 				};
 				console.log(newChild)
 

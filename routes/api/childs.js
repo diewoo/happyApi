@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 // Child model
 const Child = require('../../models/Child');
+const Father = require('../../models/Father')
 // Load Input Validation
 const validateRegisterInput = require('../../validation/child');
 
@@ -78,14 +79,29 @@ router.post('/register', (req, res) => {
 router.delete(
 	'/:id',
 	(req, res) => {
-	
-		Child.findById(req.params.id)
-		  .then(child => {
-			// Delete
-			child.remove().then(() => res.json({ success: true,
-			message: "Borrado con éxito"}));
-		  })
-		  .catch(err => res.status(404).json({ childNotFound: 'No child found' }));
+		Father.find({'childs.child': req.params.id })
+		.then(father => {
+		// Delete
+			const id = father.
+		Father.update( {'childs.child': req.params.id }, { $pull: {childs: { $in: [ req.params.id] } } 
+		})
+		// Child.findById(req.params.id)
+		//   .then(child => {
+		// 	// Delete
+		// 	child.remove().then(() => res.json({ success: true,
+		// 	message: "Borrado con éxito"}));
+		// 	Father.find({'childs.child': req.params.id })
+		// 		.then(father => {
+		// 		// Delete
+		// 		if(father) {
+		// 			father.remove().then(() => res.json({ success: true,
+		// 				message: "Padre borrado con éxito"}));
+		// 		} else{
+		// 			res.status(404).json({ nopostfound: 'No child found with that ID' })
+		// 		}
+		// 		})
+		//   })
+		//   .catch(err => res.status(404).json({ childNotFound: 'No child found' }));
 	}
   );
   module.exports = router;
