@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
@@ -15,6 +15,11 @@ const FatherSchema = new Schema({
     type: String,
     required: true
   },
+
+  fatherRandom: {
+    type: String
+  },
+
   email: {
     type: String,
     required: true
@@ -25,7 +30,7 @@ const FatherSchema = new Schema({
   },
   gender: {
     type: String,
-    required: true,
+    required: true
   },
   birthday: {
     type: Date
@@ -50,7 +55,7 @@ const FatherSchema = new Schema({
     {
       child: {
         type: Schema.Types.ObjectId,
-        ref: 'child'
+        ref: "child"
       },
       names: {
         type: String
@@ -62,4 +67,4 @@ const FatherSchema = new Schema({
     }
   ]
 });
-module.exports = Father = mongoose.model('father', FatherSchema);
+module.exports = Father = mongoose.model("father", FatherSchema);

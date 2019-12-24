@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
 const keys = require('../../config/keys');
+const randomstring = require("randomstring");
 
 // Load Input Validation
 const validateRegisterInput = require('../../validation/register');
@@ -71,7 +72,10 @@ router.post('/register', (req, res) => {
 				r: 'pg',
 				d: 'mm'
 			});
-
+			const random = randomstring.generate({
+				length: 11,
+				charset: 'alphabetic'
+			  });
 			const newFather = new Father({
 				names: req.body.names,
 				surname: req.body.surname,
@@ -83,6 +87,7 @@ router.post('/register', (req, res) => {
 				specialOffer: req.body.specialOffer,
 				line: req.body.line || '',
 				district: req.body.district || '',
+				fatherRandom: `F${random}`,
 				avatar
 			});
 			newFather
@@ -133,9 +138,8 @@ router.post(
 					child: req.body.child,
 					names: req.body.names
 				};
-				console.log(newChild)
 
-				// Add to comments array
+				// Add to childs to array
 				father.childs.unshift(newChild);
 
 				// Save
