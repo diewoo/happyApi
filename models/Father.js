@@ -60,9 +60,15 @@ const FatherSchema = new Schema({
       names: {
         type: String
       },
+      surname: {
+        type: String
+      },
       date: {
         type: Date,
         default: Date.now
+      },
+      relative: {
+        type: String
       }
     }
   ]

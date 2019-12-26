@@ -2,60 +2,61 @@
 const nodemailer = require("nodemailer");
 const Mailgen = require('mailgen');
 const keys = require('../config/keys');
-  let transporter = nodemailer.createTransport({
+let transporter = nodemailer.createTransport({
     host: keys.smtpServer,
     port: 587,
     secure: false,
     auth: {
-      user: keys.userSmtp, 
-      pass: keys.passSmtp
+        user: keys.userSmtp,
+        pass: keys.passSmtp
     }
-  });
+});
 
-  function confirm(data, done) {
-      console.log(data)
+function confirm(data, done) {
+    console.log(data)
     var mailGenerator = new Mailgen({
-        theme: 'cerberus',
+        theme: 'default',
         product: {
             name: 'Happyland',
-            link: 'https://www.happyland.com.pe/'
+            link: 'https://www.happyland.com.pe/',
+            logo: 'https://www.happyland.com.pe/wp-content/themes/myhappyland/images/logo.svg'
         }
     });
- 
+
     let email = {
         body: {
-            greeting: 'Registro',
-            title: 'Registro exitoso en Happyland!',
+            greeting: 'Código de validación - Happyland',
+            title: 'Registro exitoso en Happyland Adventure!',
             signature: 'Registro exitoso!',
-            intro: ['Bienvenido'],
-            outro: 'Mensaje:' + ' ' + data.message
+            intro: ['Bienvenido, disfrute Happyland Adventure'],
+            outro: 'Su código de validación es:' + ' ' + data.message
         }
 
     };
     let emailBody = mailGenerator.generate(email);
     let emailText = mailGenerator.generatePlaintext(email);
-    let emailOptions  = {
-        from: '"Happyland" <diegoalonso.renteria@gmail.com>',
+    let emailOptions = {
+        from: '"Happyland" <noreply@happyland.com.pe>',
         to: data.email,
-        subject: "registro",
+        subject: "Código de validación - Happyland",
         text: emailText,
         html: emailBody
 
     }
 
-  transporter.sendMail(emailOptions, function(error, info) {
-    if (error) {
-        console.log(error);
-        done(error);
-    } else {
-        console.log('Message sent: ' + info.response);
-        done(null, {
-            cod: 1,
-            msg: "Mensaje enviado correctamente"
-        });
-    }
-});
-}    
+    transporter.sendMail(emailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+            done(error);
+        } else {
+            console.log('Message sent: ' + info.response);
+            done(null, {
+                cod: 1,
+                msg: "Mensaje enviado correctamente"
+            });
+        }
+    });
+}
 module.exports = {
     confirm
 }

@@ -22,6 +22,9 @@ const childSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  relative: {
+    type: String
   }
-  });
-  module.exports = Child = mongoose.model('child', childSchema);
+});
+module.exports = Child = mongoose.model('child', childSchema);
