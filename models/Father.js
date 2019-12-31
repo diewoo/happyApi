@@ -51,6 +51,9 @@ const FatherSchema = new Schema({
   district: {
     type: String
   },
+  contract: {
+    type: String
+  },
   childs: [
     {
       child: {

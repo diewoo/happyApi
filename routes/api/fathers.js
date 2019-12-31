@@ -42,13 +42,15 @@ router.get("/:id", (req, res) => {
 // @desc    Get fathers by id
 // @access  Public
 router.post("/email/findByEmail", (req, res) => {
-  Father.findOne({ email: req.body.email }).then(father => {
-    if (father) {
-      return res.status(200).json(father);
-    } else {
-      res.status(404).json({ fatherNotFound: "No father found" });
+  Father.findOne({ email: req.body.email, birthday: req.body.birthday }).then(
+    father => {
+      if (father) {
+        return res.status(200).json(father);
+      } else {
+        res.status(404).json({ fatherNotFound: "No father found" });
+      }
     }
-  });
+  );
 });
 
 // @route   POST api/posts
@@ -88,6 +90,7 @@ router.post("/register", (req, res) => {
         line: req.body.line || "",
         district: req.body.district || "",
         fatherRandom: `${random}`,
+        contract: req.body.contract,
         avatar
       });
       newFather
@@ -181,11 +184,14 @@ router.put("/:id", (req, res) => {
 // @desc    send Email register
 // @access  Public
 router.post("/sendEmail", (req, res) => {
+  console.log(req.body + "req");
   const email = req.body.email;
   const message = req.body.message;
+  const contract = req.body.contract;
   const user = {
     email: email,
-    message: message
+    message: message,
+    contract: contract
   };
 
   // user.name="Sr(a)"
