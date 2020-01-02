@@ -15,7 +15,6 @@ const FatherSchema = new Schema({
     type: String,
     required: true
   },
-
   fatherRandom: {
     type: String
   },
@@ -69,6 +68,9 @@ const FatherSchema = new Schema({
       date: {
         type: Date,
         default: Date.now
+      },
+      identityDocumentNumber: {
+        type: String
       },
       relative: {
         type: String
