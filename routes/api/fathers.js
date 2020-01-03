@@ -91,6 +91,7 @@ router.post("/register", (req, res) => {
         district: req.body.district || "",
         fatherRandom: `${random}`,
         contract: req.body.contract,
+        notAdult: req.body.notAdult,
         avatar
       });
       newFather
@@ -136,7 +137,9 @@ router.post("/child/:id", (req, res) => {
         child: req.body.child,
         names: req.body.names,
         surname: req.body.surname,
-        relative: req.body.relative
+        relative: req.body.relative,
+        birthday: req.body.birthday,
+        age: req.body.age
       };
 
       // Add to childs to array

@@ -11,6 +11,13 @@ const childSchema = new Schema({
     type: String,
     required: true
   },
+  birthday: {
+    type: Date,
+    required: true
+  },
+  age:{
+    type:String
+  },
   identityDocumentNumber: {
     type: String,
     required: true

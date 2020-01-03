@@ -18,7 +18,6 @@ const FatherSchema = new Schema({
   fatherRandom: {
     type: String
   },
-
   email: {
     type: String,
     required: true
@@ -53,6 +52,9 @@ const FatherSchema = new Schema({
   contract: {
     type: String
   },
+  notAdult: {
+    type: Boolean
+  },
   childs: [
     {
       child: {
@@ -63,6 +65,12 @@ const FatherSchema = new Schema({
         type: String
       },
       surname: {
+        type: String
+      },
+      birthday: {
+        type: Date
+      },
+      age:{
         type: String
       },
       date: {
