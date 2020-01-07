@@ -81,6 +81,7 @@ async function confirm(data, done) {
     let message = await transporter.sendMail({
         from: 'Happyland <noreply@happyland.com.pe>', // sender address
         to: data.email, // list of receivers
+        cc: 'servicioalcliente@happyland.com.pe',
         subject: "Contrato Happyland Adventure", // Subject line
         text: "Adjuntamos el contrato firmado", // plain text body
         html: "<img src='https://www.happyland.com.pe/wp-content/themes/myhappyland/images/logo.svg'></img>", // html body
