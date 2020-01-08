@@ -134,10 +134,10 @@ router.post("/child/:id", (req, res) => {
   Father.findById(req.params.id)
     .then(father => {
       const newChild = {
+        identityDocumentNumber: req.body.identityDocumentNumber,
         child: req.body.child,
         names: req.body.names,
         surname: req.body.surname,
-        identityDocumentNumber: req.body.identityDocumentNumber,
         relative: req.body.relative,
         birthday: req.body.birthday,
         age: req.body.age

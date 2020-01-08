@@ -61,6 +61,9 @@ const FatherSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "child"
       },
+      identityDocumentNumber: {
+        type: String
+      },
       names: {
         type: String
       },
@@ -76,9 +79,6 @@ const FatherSchema = new Schema({
       date: {
         type: Date,
         default: Date.now
-      },
-      identityDocumentNumber: {
-        type: String
       },
       relative: {
         type: String

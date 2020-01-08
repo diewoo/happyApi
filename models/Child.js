@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const childSchema = new Schema({
+  identityDocumentNumber: {
+    type: String,
+    required: true
+  },
   names: {
     type: String,
     required: true
@@ -17,10 +21,6 @@ const childSchema = new Schema({
   },
   age:{
     type:String
-  },
-  identityDocumentNumber: {
-    type: String,
-    required: true
   },
   gender: {
     type: String,

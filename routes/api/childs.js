@@ -60,10 +60,10 @@ router.post("/register", (req, res) => {
 			});
 
 			const newChild = new Child({
+				identityDocumentNumber: req.body.identityDocumentNumber,
 				names: req.body.names,
 				surname: req.body.surname,
 				birthday: req.body.birthday,
-				identityDocumentNumber: req.body.identityDocumentNumber,
 				gender: req.body.gender,
 				relative: req.body.relative,
 				age: req.body.age,
