@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 // Create Schema
 const childSchema = new Schema({
   identityDocumentNumber: {
-    type: String,
-    required: true
+    type: String
   },
   names: {
     type: String,

@@ -45,14 +45,6 @@ router.post("/register", (req, res) => {
 	if (!isValid) {
 		return res.status(400).json(errors);
 	}
-
-	Child.findOne({
-		identityDocumentNumber: req.body.identityDocumentNumber
-	}).then(child => {
-		if (child) {
-			errors.message = "Ya existe el registro";
-			return res.status(422).json(errors);
-		} else {
 			const avatar = gravatar.url(req.body.identityDocumentNumber, {
 				s: "200",
 				r: "pg",
@@ -73,10 +65,8 @@ router.post("/register", (req, res) => {
 				.save()
 				.then(child => res.json(child))
 				.catch(err => console.log(err));
-		}
-	});
-});
-
+		})
+	
 // @route   DELETE api/father/:id
 // @desc    Delete father
 // @access  public

@@ -26,9 +26,6 @@ module.exports = function validateRegisterInput(data) {
   if (Validator.isEmpty(data.gender)) {
     errors.gender = 'Genero  es requerido';
   }
-  if (Validator.isEmpty(data.identityDocumentNumber)) {
-    errors.identityDocumentNumber = 'Dni es requerido';
-  }
 
   return {
     errors,
