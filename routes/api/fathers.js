@@ -90,6 +90,7 @@ router.post("/register", (req, res) => {
         line: req.body.line || "",
         district: req.body.district || "",
         fatherRandom: `${random}`,
+        city: req.body.district,
         contract: req.body.contract,
         notAdult: req.body.notAdult,
         avatar
@@ -173,6 +174,7 @@ router.put("/:id", (req, res) => {
   if (req.body.email) profileFields.email = req.body.email;
   if (req.body.gender) profileFields.gender = req.body.gender;
   if (req.body.birthday) profileFields.birthday = req.body.birthday;
+  if (req.body.city) profileFields.city = req.body.city;
   if (req.body.specialOffer) profileFields.specialOffer = req.body.specialOffer;
   if (req.body.line) profileFields.line = req.body.line;
   if (req.body.district) profileFields.district = req.body.district;

@@ -33,6 +33,9 @@ const FatherSchema = new Schema({
   birthday: {
     type: Date
   },
+  city: {
+    type: String,
+  },
   specialOffer: {
     type: String
   },
