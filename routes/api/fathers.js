@@ -175,6 +175,7 @@ router.put("/:id", (req, res) => {
   if (req.body.gender) profileFields.gender = req.body.gender;
   if (req.body.birthday) profileFields.birthday = req.body.birthday;
   if (req.body.city) profileFields.city = req.body.city;
+  if (req.body.contract) profileFields.contract = req.body.contract;
   if (req.body.specialOffer) profileFields.specialOffer = req.body.specialOffer;
   if (req.body.line) profileFields.line = req.body.line;
   if (req.body.district) profileFields.district = req.body.district;

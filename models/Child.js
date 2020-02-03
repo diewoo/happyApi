@@ -15,8 +15,7 @@ const childSchema = new Schema({
     required: true
   },
   birthday: {
-    type: Date,
-    required: true
+    type: Date
   },
   age:{
     type:String
