@@ -90,6 +90,7 @@ router.post("/register", (req, res) => {
         line: req.body.line || "",
         district: req.body.district || "",
         fatherRandom: `${random}`,
+        lastDate: req.body.lastDate,
         city: req.body.district,
         contract: req.body.contract,
         notAdult: req.body.notAdult,
@@ -179,7 +180,7 @@ router.put("/:id", (req, res) => {
   if (req.body.specialOffer) profileFields.specialOffer = req.body.specialOffer;
   if (req.body.line) profileFields.line = req.body.line;
   if (req.body.district) profileFields.district = req.body.district;
-  Father.findByIdAndUpdate(req.params.id, { $set: profileFields }, function(
+  Father.findByIdAndUpdate(req.params.id, { $set: profileFields }, function (
     err,
     product
   ) {

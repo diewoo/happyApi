@@ -58,6 +58,9 @@ const FatherSchema = new Schema({
   notAdult: {
     type: Boolean
   },
+  lastDate: {
+    type: String
+  },
   childs: [
     {
       child: {
@@ -76,7 +79,7 @@ const FatherSchema = new Schema({
       birthday: {
         type: Date
       },
-      age:{
+      age: {
         type: String
       },
       date: {
