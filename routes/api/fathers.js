@@ -180,6 +180,7 @@ router.put("/:id", (req, res) => {
   if (req.body.specialOffer) profileFields.specialOffer = req.body.specialOffer;
   if (req.body.line) profileFields.line = req.body.line;
   if (req.body.district) profileFields.district = req.body.district;
+  if (req.body.lastDate) profileFields.lastDate = req.body.lastDate;
   Father.findByIdAndUpdate(req.params.id, { $set: profileFields }, function (
     err,
     product
