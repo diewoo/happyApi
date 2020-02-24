@@ -22,9 +22,12 @@ router.get("/test", (req, res) => res.json({ msg: "Fathers Works" }));
 // @access  Public
 router.get("/", (req, res) => {
   Father.find()
-    .sort({ date: -1 })
+    // .sort({ date: -1 })
     .then(fathers => res.json(fathers))
-    .catch(err => res.status(404).json({ nofathersfound: "No fathers found" }));
+    .catch(err =>
+      // res.status(404).json({ nofathersfound: "No fathers found" })
+      console.log(err)
+    );
 });
 
 // @route   GET api/fathers/:id
@@ -42,7 +45,7 @@ router.get("/:id", (req, res) => {
 // @desc    Get fathers by id
 // @access  Public
 router.post("/email/findByEmail", (req, res) => {
-  Father.findOne({ email: req.body.email, birthday: req.body.birthday }).then(
+  Father.findOne({ email: req.body.email }).then(
     father => {
       if (father) {
         return res.status(200).json(father);
@@ -90,6 +93,7 @@ router.post("/register", (req, res) => {
         line: req.body.line || "",
         district: req.body.district || "",
         fatherRandom: `${random}`,
+        visits: req.body.visits,
         lastDate: req.body.lastDate,
         city: req.body.district,
         contract: req.body.contract,
@@ -178,6 +182,7 @@ router.put("/:id", (req, res) => {
   if (req.body.city) profileFields.city = req.body.city;
   if (req.body.contract) profileFields.contract = req.body.contract;
   if (req.body.specialOffer) profileFields.specialOffer = req.body.specialOffer;
+  if (req.body.visits) profileFields.visits = req.body.visits;
   if (req.body.line) profileFields.line = req.body.line;
   if (req.body.district) profileFields.district = req.body.district;
   if (req.body.lastDate) profileFields.lastDate = req.body.lastDate;

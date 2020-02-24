@@ -7,7 +7,7 @@ const app = express();
 const cors = require('cors')
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+// const db = require('./config/keys').mongoURI;
 
 // Body parser middleware
 app.use(cors());
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 // Connect to MongoDB
 mongoose
-  .connect(db)
+  .connect('mongodb://localhost:27017/happyland')
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 

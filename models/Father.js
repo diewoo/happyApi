@@ -18,6 +18,9 @@ const FatherSchema = new Schema({
   fatherRandom: {
     type: String
   },
+  visits: {
+    type: Number
+  },
   email: {
     type: String,
     required: true
